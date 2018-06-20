@@ -1,0 +1,64 @@
+page-contacts {  
+    .item-md{padding-right: 40px}  
+.contacts-list{  
+    position: absolute;  
+    top: 50px;  
+    width: 100%;  
+}  
+}  
+    .contact-list{  
+    border-width: 0px;  
+    background-color: #fff;  
+    color: #444;  
+    position: relative;  
+    z-index: 2;  
+    display: block;  
+    margin: -1px;  
+    font-size: 16px;  
+    }  
+          
+    .contact-list div.label{  
+        padding: 8px 16px;  
+        background: #F5F5F5;  
+    }  
+  
+    .contact-list-item{  
+            border-color: #ddd;  
+    background-color: #fff;  
+    color: #444;  
+    position: relative;  
+    z-index: 2;  
+    display: block;  
+    margin: -1px;  
+    padding: 16px;  
+    border-width: 1px;  
+    border-style: solid none;  
+    font-size: 16px;  
+    }  
+  
+    .contact-name{  
+          
+        padding-top: 26px;  
+        padding-bottom: 0px;  
+    }  
+    .citybox-shortcuts {  
+        position: fixed;  
+        top: 130px;  
+        right: 0;  
+        bottom: 0px;  
+        width: 30px;  
+        font-size: 11px;  
+        z-index: 100;  
+    }  
+    .citybox-shortcuts p{  
+          
+        margin:5px;  
+    }  
+    .citybox-shortcuts a {  
+        text-align: center;  
+        color: #A2A2A2;  
+          
+    }  
+    .contacts-group ion-label{  
+        margin:0px;  
+    }

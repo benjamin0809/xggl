@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar >
+    <ion-searchbar (ionInput)="getItems($event)" placeholder="姓名首字母组合、数字搜索" autocomplete="on" mode='ios' color='orange' showCancelButton='true'
+      cancelButtonText="取消" (ionCancel)="onCancelSearch($event)">
+
+    </ion-searchbar>
+  </ion-toolbar>
+
+</ion-header>
+<ion-content>
+	<!--useful start-->
+<!-- 
+	<div *ngIf="!isSearching" class="contacts-list">
+		<ion-item-group *ngFor="let group of formatContacts">
+			<ion-item-divider color="light" id="'contact-'+{{group.key}}" class="contacts-group">{{group.key}}</ion-item-divider>
+			<ion-item *ngFor="let item of group.value | orderBy:['pinyinName']" (click)="calling(item)">
+
+				<ion-thumbnail item-left>
+					<img src="assets/img/th_imge.png">
+				</ion-thumbnail>
+				<h2>{{item.displayName}}</h2>
+				<p>{{item.phoneNumber}}</p>
+			</ion-item>
+
+		</ion-item-group>
+	</div> -->
+	<!--useful end-->
+
+	<ion-list *ngIf="isSearching" class="contacts-list">
+		<ion-item *ngFor="let item of searchingItems" (click)="calling(item)">
+			<ion-thumbnail item-left>
+				<img src="assets/img/th_imge.png">
+			</ion-thumbnail>
+			<h2>{{item.displayName}}</h2>
+			<p>{{item.phoneNumber}}</p>
+		</ion-item>
+	</ion-list>
+</ion-content>

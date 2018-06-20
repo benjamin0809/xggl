@@ -1,0 +1,48 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{ 'LOGIN_TITLE' | translate }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <form >
+    <ion-list>
+      <img-loader src="https://www.popochiu.com/upload/2018-02-06/laohao.jpeg" useImg></img-loader>
+      <ion-item>
+        <ion-label fixed>{{ 'EMAIL' | translate }}</ion-label>
+        <ion-input type="email" [(ngModel)]="account.account" name="email"></ion-input>
+      </ion-item>
+
+      <!--
+      Want to use a Username instead of an Email? Here you go:
+
+      <ion-item>
+        <ion-label floating>{{ 'USERNAME' | translate }}</ion-label>
+        <ion-input type="text" [(ngModel)]="account.username" name="username"></ion-input>
+      </ion-item>
+      -->
+
+      <ion-item>
+        <ion-label fixed>{{ 'PASSWORD' | translate }}</ion-label>
+        <ion-input type="password" [(ngModel)]="account.pwd" name="password"></ion-input>
+      </ion-item>
+
+      <div padding>
+        <ion-grid>
+            <ion-row>
+              <ion-col col-6>
+                <button ion-button color="primary"  full (click)="goRegister()">{{ 'SIGNUP_BUTTON' | translate }}</button>
+              </ion-col>
+              <ion-col col-6>   
+                <button ion-button color="primary"   full (click)="doLogin()">{{ 'LOGIN_BUTTON' | translate }}</button>
+              </ion-col>
+            </ion-row>
+        </ion-grid>
+      </div>
+
+    </ion-list>
+  </form>
+</ion-content>
