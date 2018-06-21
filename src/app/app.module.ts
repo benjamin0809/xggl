@@ -18,8 +18,9 @@ import { MyApp } from './app.component';
 import { JPush } from '@jiguang-ionic/jpush';
 import { Device } from '@ionic-native/device';
 import { IonicImageLoader } from 'ionic-image-loader';
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 
-
+import { JmessageServiceProvider } from '../providers/jmessage-service/jmessage-service';
 import { JMessagePlugin,JMMessageSendOptions  } from '@jiguang-ionic/jmessage'
 import { Network } from '@ionic-native/network';
 import { File } from '@ionic-native/file';
@@ -105,6 +106,7 @@ export function provideSettings(storage: Storage) {
     NativeService,
     Network,
     File,
+    FileTransfer,
     AppMinimize,
     CallNumber,
     ThemeableBrowser,
@@ -113,6 +115,7 @@ export function provideSettings(storage: Storage) {
     Sim,
     StorageService,
     JMessagePlugin,
+    JmessageServiceProvider,
     { provide: Settings, useFactory: provideSettings, deps: [Storage] },
     // Keep this to enable Ionic's runtime error handling during development
     { provide: ErrorHandler, useClass: IonicErrorHandler }

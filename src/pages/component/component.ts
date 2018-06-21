@@ -26,6 +26,8 @@ export class ComponentPage {
       {fullname:"WechatPage",page:"WechatPage"},
       {fullname:"ContactPages",page:"ContactPages"},
       {fullname:"JpushPage",page:"JpushPage"},
+      {fullname:"FilePage",page:"FilePage"},
+      {fullname:"FiletransferPage",page:"FiletransferPage"},
     ]
   }
 

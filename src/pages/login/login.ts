@@ -1,12 +1,16 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { IonicPage, NavController, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, ToastController, Events } from 'ionic-angular';
 
 import { User } from '../../providers';
 import { MainPage } from '../';
  
 import { UserProvider } from '../../providers/providers';
 import { Storage } from '@ionic/storage';
+
+
+import { JmessageServiceProvider } from '../../providers/jmessage-service/jmessage-service';
+import { NativeService } from '../../services/native-service';
 
 @IonicPage()
 @Component({
@@ -30,11 +34,18 @@ export class LoginPage {
     public toastCtrl: ToastController,
     public translateService: TranslateService,
     public userProvider: UserProvider,
-    public storage: Storage) {
+    public storage: Storage,
+    public Jmessage: JmessageServiceProvider,
+    public events:Events,
+    public nativeService: NativeService) {
 
     this.translateService.get('LOGIN_ERROR').subscribe((value) => {
       this.loginErrorString = value;
     })
+
+    this.events.subscribe('user-login',()=>{
+      this.navCtrl.setRoot(MainPage);
+    });
 
     this.storage.get("accItem").then((val) =>{
       if(val){
@@ -47,12 +58,29 @@ export class LoginPage {
 
   // Attempt to login in through our User service
   doLogin() {
+    if(!this.account.account){
+      alert("用户名不能为空")
+      return;
+    }
+    if(!this.account.pwd){
+      alert("密码不能为空")
+      return;
+    }
+
     this.userProvider.getUserInfo(this.account).subscribe((resp) => {
       console.log(resp)
 
       this.storage.set('accItem',this.account);
       if(resp.data.result){
-        this.navCtrl.push(MainPage);
+
+        if(this.nativeService.isMobile()){
+
+          this.Jmessage.login(this.account);
+        }else{
+
+          this.navCtrl.setRoot(MainPage);
+        }
+ 
       }else{
         let toast = this.toastCtrl.create({
           message: this.loginErrorString,

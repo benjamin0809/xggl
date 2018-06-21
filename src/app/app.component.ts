@@ -70,11 +70,9 @@ export class MyApp {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
 
-      try{
+       
         this.Jmessage.init();//
-      }catch(e){
-        console.log(e)
-      }
+      
 
        // 订阅重新登录事件
        this.events.subscribe('user:reLogin', () => {

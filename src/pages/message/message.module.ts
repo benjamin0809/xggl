@@ -16,4 +16,4 @@ import { messagePage } from './message';
     messagePage
   ]
 })
-export class ListMasterPageModule { }
+export class MessagePageModule { }

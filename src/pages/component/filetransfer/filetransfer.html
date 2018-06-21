@@ -1,0 +1,31 @@
+<!--
+  Generated template for the FiletransferPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>filetransfer</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <p>
+    result:{{result}}
+  </p>
+
+  <p>resulturl:{{resulturl}}</p>
+
+  <img [src]="resulturl">
+  <ion-list>
+    <ion-item *ngFor="let res of resArray">
+        <button ion-button block (click)="openComponent(res)">{{res.fullname}}</button>
+    </ion-item>
+  </ion-list>
+  
+</ion-content>

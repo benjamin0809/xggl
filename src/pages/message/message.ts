@@ -7,8 +7,8 @@ import { Items } from '../../providers';
 import { JmessageServiceProvider } from '../../providers/jmessage-service/jmessage-service';
 @IonicPage()
 @Component({
-  selector: 'page-list-master',
-  templateUrl: 'list-master.html'
+  selector: 'page-message',
+  templateUrl: 'message.html'
 })
 export class messagePage {
   currentItems: any[];

@@ -9,10 +9,10 @@ import { JmessageServiceProvider } from '../../providers/jmessage-service/jmessa
 
 @IonicPage()
 @Component({
-  selector: 'page-search',
-  templateUrl: 'search.html'
+  selector: 'page-contact',
+  templateUrl: 'contact.html'
 })
-export class SearchPage {
+export class ContactPage {
 
   currentItems: any = [];
 

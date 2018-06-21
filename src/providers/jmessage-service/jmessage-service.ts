@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { MainPage } from '../../pages';
  
   
+import { NativeService } from '../../services/native-service';
 import { JMessagePlugin,JMMessageSendOptions  } from '@jiguang-ionic/jmessage'
 import { Events, LoadingController  } from 'ionic-angular';
 /*
@@ -24,7 +25,8 @@ export class JmessageServiceProvider {
     public jmessage: JMessagePlugin , 
     public storage: Storage,
     public events: Events,
-    public loadingCtrl: LoadingController) {
+    public loadingCtrl: LoadingController,
+    public nativeService : NativeService) {
 
       this.loader = this.loadingCtrl.create({
          
@@ -89,7 +91,9 @@ export class JmessageServiceProvider {
 
   //初始化插件
   init(){ 
-    this.jmessage.init({ isOpenMessageRoaming: true });
+    if(this.nativeService.isMobile()){
+      this.jmessage.init({ isOpenMessageRoaming: true });
+    }
   }
 
   //设置是否开启 debug 模式，开启后 SDK 将会输出更多日志信息，推荐在应用对外发布时关闭。
@@ -115,7 +119,7 @@ export class JmessageServiceProvider {
   //用户登录。
   login(account){
     this.loader.present();
-    return this.jmessage.login({ username: account.username, password: account.password}).then((result)=>{
+    return this.jmessage.login({ username: account.account, password: account.pwd}).then((result)=>{
       if(result.toLocaleLowerCase() === 'ok'){
         this.storage.set('account',account);
         // this.navCtrl.push(MainPage);

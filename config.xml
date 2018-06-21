@@ -91,7 +91,6 @@
     </plugin>
     <plugin name="cordova-plugin-file" spec="^6.0.1" />
     <plugin name="cordova-plugin-file-opener2" spec="^2.0.19" />
-    <plugin name="cordova-plugin-file-transfer" spec="^1.7.1" />
     <plugin name="cordova-plugin-code-push" spec="^1.11.11" />
     <plugin name="cordova-plugin-zip" spec="^3.1.0" />
     <plugin name="mx.ferreyra.callnumber" spec="~0.0.2" />
@@ -100,8 +99,9 @@
     <plugin name="cordova.plugins.diagnostic" spec="^4.0.7" />
     <plugin name="cordova-plugin-network-information" spec="^2.0.1" />
     <plugin name="cordova-plugin-appminimize" spec="^1.0.0" />
-    <engine name="android" spec="7.0.0" />
     <plugin name="jmessage-phonegap-plugin" spec="^3.4.7">
         <variable name="APP_KEY" value="06b52d0a26703eb0431399f8" />
     </plugin>
+    <plugin name="cordova-plugin-file-transfer" spec="^1.7.1" />
+    <engine name="android" spec="7.0.0" />
 </widget>
