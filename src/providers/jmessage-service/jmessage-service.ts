@@ -103,7 +103,7 @@ export class JmessageServiceProvider {
   //用户注册。
   register(account){
      
-    return this.jmessage.register({ username: account.username, password: account.password, nickname: account.nickname })
+    return this.jmessage.register({ username: account.name, password: account.password, nickname: account.nickname })
     .then((result)=>{
       // alert(result)
       if(  result.toLocaleLowerCase() === 'ok'){
@@ -118,6 +118,8 @@ export class JmessageServiceProvider {
 
   //用户登录。
   login(account){
+
+    alert(JSON.stringify(account))
     this.loader.present();
     return this.jmessage.login({ username: account.account, password: account.pwd}).then((result)=>{
       if(result.toLocaleLowerCase() === 'ok'){

@@ -4,6 +4,7 @@ import { IonicPage, NavController, ToastController } from 'ionic-angular';
 
 import { User } from '../../providers';
 import { MainPage } from '../';
+import { JmessageServiceProvider } from '../../providers/jmessage-service/jmessage-service';
 
 @IonicPage()
 @Component({
@@ -26,6 +27,7 @@ export class SignupPage {
   constructor(public navCtrl: NavController,
     public user: User,
     public toastCtrl: ToastController,
+    public jmessage: JmessageServiceProvider,
     public translateService: TranslateService) {
 
     this.translateService.get('SIGNUP_ERROR').subscribe((value) => {
@@ -36,6 +38,9 @@ export class SignupPage {
   doSignup() {
     // Attempt to login in through our User service
     this.user.signup(this.account).subscribe((resp) => {
+      this.jmessage.register(this.account).then(()=>{
+
+      })
       this.navCtrl.push(MainPage);
     }, (err) => {
 

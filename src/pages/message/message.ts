@@ -28,11 +28,11 @@ export class messagePage {
    * The view loaded, let's query our items for the list
    */
   ionViewDidLoad() {
-    try{
+    
       setTimeout(()=>{
         this.getConversations();
       },100)
-    }catch{}
+    
    
   }
 
@@ -116,6 +116,7 @@ export class messagePage {
         }
      }
 
+     alert("count:"+count)
     return count;
   }
 }

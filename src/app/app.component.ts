@@ -5,8 +5,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { Config, Nav, Platform, Events, IonicApp, ModalController, AlertController } from 'ionic-angular';
 import { Storage } from '@ionic/storage'
 import { FirstRunPage ,LoginPage} from '../pages';
-import { Settings } from '../providers';
-import { ImageLoaderConfig } from 'ionic-image-loader';
+import { Settings } from '../providers'; 
 import { MainPage } from '../pages/index'
 
 
@@ -57,8 +56,7 @@ export class MyApp {
     private config: Config, 
     private statusBar: StatusBar, 
     private splashScreen: SplashScreen,
-    public Jmessage: JmessageServiceProvider,
-    imageLoaderConfig: ImageLoaderConfig,
+    public Jmessage: JmessageServiceProvider, 
     public storage: Storage,
     public events:Events,
     public ionicApp: IonicApp,
@@ -123,68 +121,24 @@ export class MyApp {
       });
 
 
+      //接收到消息时，判断页面是否在聊天页面，若不是，则跳转到聊天界面
       this.events.subscribe('receive-message',(res)=>{
-        // alert("receive-message"+JSON.stringify(res))
-        //  this.messages.concat(res.result); 
-
-        // let isLoginShow = false;
-        // let activePortal = this.ionicApp._viewport.getActive();
-        // if (activePortal) {
-        //   let instance = activePortal.instance;
-        //   if(instance.constructor.name == LoginPage){
-        //     isLoginShow = true;
-        //   };
-        // }
-        // if(!isLoginShow){
-        //   this.modalCtrl.create(LoginPage).present();
-        // }
-
+    
         const tabs = this.nav.getActiveChildNav();
         const tab = tabs.getSelected();
         const activeVC = tab.getActive();
 
-        alert("(activeVC.name:"+activeVC.name)
+       // alert("(activeVC.name:"+activeVC.name)
         if(activeVC.name == "ConversationPage"){ 
           this.events.publish('receive-message-fromRoot',res);
         }else{
           this.events.publish('jmessage.notificationReceived')
         }
-
-      
       })
-
-      
-    this.storage.get('account').then((result)=>{
-      if(result && result.username && result.password){
-        // alert("get storage:" + JSON.stringify(result))
-
-        try{
-          this.Jmessage.login(result).then((result)=>{
-            this.nav.setRoot(this.rootPage);
-          }) ;;
-        }catch(e){
-          console.log(e)
-        }
-        
-      }else{
-        this.events.publish('user:reLogin') 
-      }
-    }) 
+    
     });
 
-        // enable debug mode to get console logs and stuff
-        imageLoaderConfig.enableDebugMode();
-        // set a fallback url to use by default in case an image is not found
-        imageLoaderConfig.setFallbackUrl('assets/fallback.png');
-    
-        imageLoaderConfig.setImageReturnType('base64');
-    
-        imageLoaderConfig.setSpinnerColor('secondary');
-        imageLoaderConfig.setSpinnerName('bubbles');
-        imageLoaderConfig.setCacheDirectoryName('my-custom-cache-directory-name');
-    
-        imageLoaderConfig.maxCacheSize = 2 * 1024 * 1024; // 2 MB
-        imageLoaderConfig.maxCacheAge = 60 * 1000; // 1 minute
+     
 
     this.initTranslate();
 
@@ -198,6 +152,7 @@ export class MyApp {
   
   }
 
+  //初始化语言
   initTranslate() {
     // Set the default language for translation strings, and the current language.
     this.translate.setDefaultLang('en');
@@ -231,6 +186,26 @@ export class MyApp {
     this.translate.get(['BACK_BUTTON_TEXT']).subscribe(values => {
       this.config.set('ios', 'backButtonText', values.BACK_BUTTON_TEXT);
     });
+  }
+
+  //初始化开始页面
+  initPage(){
+    this.storage.get('account').then((result)=>{
+      if(result && result.username && result.password){
+        // alert("get storage:" + JSON.stringify(result))
+
+        try{
+          this.Jmessage.login(result).then((result)=>{
+            this.nav.setRoot(this.rootPage);
+          }) ;;
+        }catch(e){
+          console.log(e)
+        }
+        
+      }else{
+        this.events.publish('user:reLogin') 
+      }
+    }) 
   }
 
   openPage(page) {

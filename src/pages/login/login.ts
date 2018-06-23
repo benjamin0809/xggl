@@ -105,4 +105,19 @@ export class LoginPage {
   goRegister(){
     this.navCtrl.push('SignupPage');
   }
+
+  //仅限极光IM登录
+  signIn(){
+    if(!this.account.account){
+      alert("用户名不能为空")
+      return;
+    }
+    if(!this.account.pwd){
+      alert("密码不能为空")
+      return;
+    }
+
+    this.Jmessage.login(this.account);
+  }
+  
 }

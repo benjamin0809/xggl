@@ -40,7 +40,7 @@ export class DatePipe implements PipeTransform {
      }else if(devalue >=  3 * 60 * 1000 && devalue < 24 * 60 * 60 * 1000){
       return "昨天"
      }else if(devalue >=  24 * 60 * 60 * 1000 && devalue < 365 * 24 * 60 * 60 * 1000){
-      return month + "月" + day + "日";
+      return (month + 1) +"月" + day + "日";
      }else  {
       return "很久以前"
      }
