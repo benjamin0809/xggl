@@ -116,7 +116,7 @@ export class messagePage {
         }
      }
 
-     alert("count:"+count)
+    //  alert("count:"+count)
     return count;
   }
 }

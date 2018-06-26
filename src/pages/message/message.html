@@ -37,7 +37,9 @@
         <h2>{{item.target.username}}</h2>
         <p>{{item.title}}</p>
         <p>{{item.latestMessage.text}}</p>
-        <ion-note item-end *ngIf="item.unreadCount">{{item.unreadCount}}</ion-note>
+
+        
+       <ion-badge item-end *ngIf="item.unreadCount">{{item.unreadCount}}</ion-badge> 
       </button>
 
       <ion-item-options>

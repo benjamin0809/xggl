@@ -27,23 +27,29 @@
   <ion-list>
  
       <div no-padding *ngFor="let item of messages">
-          <ion-item    *ngIf="!item.isSend">
+        
+        <div *ngIf="!item.isSend">
+          <h2 text-center>{{item.createTime | datePipe}}</h2>
+          <ion-item    >
             <ion-avatar item-start>
               <img src="https://www.popochiu.com/upload/2018-02-06/laohao.jpeg">
             </ion-avatar>
-              <h2 text-center>{{item.createTime | datePipe}}</h2>
               <h3>{{item.from.username}}</h3>
               <p>{{item.text}}</p>
           </ion-item>
+          </div>
 
-          <ion-item   *ngIf="item.isSend">
+          <div *ngIf="item.isSend">
+          
+          <h2 text-center>{{item.createTime | datePipe}}</h2>
+          <ion-item    >
               <ion-avatar item-end>
                 <img [src]="item.avatarThumbPath">
               </ion-avatar>
-              <h2 text-center>{{item.createTime | datePipe}}</h2>
               <h3 text-right>{{item.from.username}}</h3>
               <p text-right>{{item.text}}</p>
           </ion-item>
+        </div>
     </div>
 
         

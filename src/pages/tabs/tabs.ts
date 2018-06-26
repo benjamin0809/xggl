@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { IonicPage, NavController, Tabs,Events } from 'ionic-angular';
 
@@ -28,21 +28,22 @@ export class TabsPage {
 
   constructor(public navCtrl: NavController, 
     public translateService: TranslateService,
-   public events: Events) {
+   public events: Events,
+   public cd: ChangeDetectorRef) {
 
     // 当收到推送消息时（此时将消息存储）
     this.events.subscribe('jmessage.notificationReceived', () => {
       // alert("tabs.ts jmessage.notificationReceived")
       this.newMessageCount ++;
-      this._setTabMessageBadge();
+      this._setTabMessageBadge(this.newMessageCount);
 
       this.events.publish('refresh-conversation');
     });
 
     this.events.subscribe('resetBadge-listmaster',(count)=>{
-      alert(count)
+      // alert(count)
       this.newMessageCount = count;
-      this._setTabMessageBadge();
+      this._setTabMessageBadge(count);
     })
 
     // translateService.get(['TAB1_TITLE', 'TAB2_TITLE', 'TAB3_TITLE']).subscribe(values => {
@@ -55,7 +56,7 @@ export class TabsPage {
   ionChange(){
     // if(this.tabRef.getSelected().index==1){
     //    this.newMessageCount=0;
-    //    this._setTabMessageBadge();
+        // this._setTabMessageBadge(this.newMessageCount);
     // }
   };
 
@@ -64,12 +65,13 @@ export class TabsPage {
     this.ionChange();
   }
 
-  _setTabMessageBadge(){
-    if(this.newMessageCount==0){
+  _setTabMessageBadge(count){
+    if(count==0){
       this.tabRef.getByIndex(0).tabBadge = "";
    }else{
-     this.tabRef.getByIndex(0).tabBadge = this.newMessageCount.toString();
+     this.tabRef.getByIndex(0).tabBadge = count.toString();
    }
+   this.cd.detectChanges();
   }
 
   resetUnreadCount(){

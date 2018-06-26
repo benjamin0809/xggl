@@ -15,17 +15,27 @@
 
 <ion-content padding>
   <ion-list>
-    <ion-item>
-      <ion-avatar item-start>
-        <img src="https://www.popochiu.com/upload/2018-02-06/laohao.jpeg">
-      </ion-avatar>
-      <h2>{{currentItem.username}}</h2>
-      <h3>{{currentItem.gender}}</h3>
-      <p>{{currentItem.nickname}}</p>
 
-      <p>{{currentItem.signature}}</p>
-      <p>{{currentItem.address}}</p>
-    </ion-item>
+      <ion-card>
+
+           
+            
+              <img   src="https://www.popochiu.com/upload/2018-02-06/laohao.jpeg">
+            
+            <h2 text-center>{{currentItem.username}}</h2> 
+         
+         
+        
+          <ion-card-content> 
+              <h3 text-center>{{currentItem.gender}}</h3>
+              <p text-center>{{currentItem.nickname}}</p>
+        
+              <p text-center>{{currentItem.signature}}</p>
+              <p text-center>{{currentItem.address}}</p>
+          </ion-card-content>
+    </ion-card>  
+
+     
   </ion-list>
 
   <button ion-button block (click)="createConversation()">Messages</button>
