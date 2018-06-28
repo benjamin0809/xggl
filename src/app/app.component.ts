@@ -68,6 +68,8 @@ export class MyApp {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
 
+    
+
        
         this.Jmessage.init();//
       
@@ -136,6 +138,7 @@ export class MyApp {
         }
       })
     
+      this.initBMap();
     });
 
      
@@ -270,5 +273,16 @@ export class MyApp {
      
   contact_deleted(params){
 
+  }
+
+  initBMap(){
+    console.log("MyApp::constructor platform.ready");
+    baidumap_location.getCurrentPosition( (result) => {
+      alert(JSON.stringify(result, null, 4))
+      console.log("================")
+      console.log(JSON.stringify(result, null, 4));
+    },   (error)=> {
+
+    });
   }
 }

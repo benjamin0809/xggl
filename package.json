@@ -52,6 +52,7 @@
     "cordova-plugin-android-fingerprint-auth": "^1.4.3",
     "cordova-plugin-app-version": "^0.1.9",
     "cordova-plugin-appminimize": "^1.0.0",
+    "cordova-plugin-baidumaplocation": "^4.0.1",
     "cordova-plugin-code-push": "^1.11.11",
     "cordova-plugin-contacts": "^3.0.1",
     "cordova-plugin-device": "^2.0.2",
@@ -116,6 +117,11 @@
       "cordova-plugin-appminimize": {},
       "jmessage-phonegap-plugin": {
         "APP_KEY": "06b52d0a26703eb0431399f8"
+      },
+      "cordova-plugin-baidumaplocation": {
+        "ANDROID_KEY": "bnSimU0yx8DsgRRxDZ9Pm6FuiwyMSy9R",
+        "IOS_KEY": "sadsadsadsadas",
+        "IOS_LOCATION_DESC": "请点击'好'以允许访问。"
       }
     },
     "platforms": [
